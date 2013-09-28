@@ -1,4 +1,5 @@
 include:
+  - zsh
   - users
   - sudo
   - ssh
