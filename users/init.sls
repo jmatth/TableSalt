@@ -15,7 +15,17 @@
       - {{ group }}
       {% endfor %}
 
-  {% if 'keys' in user %}
+{% if 'keys' in user %}
+{{ username }}-sshdir:
+  file.directory:
+    - name: /home/{{ username }}/.ssh
+    - user: {{ username }}
+    - group: {{ username }}
+    - mode: 755
+    - require:
+      - user: {{ username }}
+
+{{ username }}-privatekey:
   file.managed:
     - name: /home/{{ username }}/.ssh/id_rsa
     - makedirs: true
@@ -23,6 +33,8 @@
     - group: {{ username }}
     - mode: 600
     - contents_pillar: users:{{ username }}:keys:private
+
+{{ username }}-pubkey:
   file.managed:
     - name: /home/{{ username }}/.ssh/id_rsa.pub
     - makedirs: true
@@ -30,5 +42,5 @@
     - group: {{ username }}
     - mode: 644
     - contents_pillar: users:{{ username }}:keys:public
-  {% endif %}
+{% endif %}
 {% endfor %}
