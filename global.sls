@@ -4,4 +4,5 @@ include:
   - sudo
   - ssh
   - vim
+  - tmux
   - modprobe
