@@ -2,14 +2,30 @@ include:
   - ssh
 
 sshd:
-  service:
-    - running
-    - enabled
+  pkg:
+    - installed
     {% if grains['os_family'] == 'Debian' %}
+    - name: openssh-server
+    {% elif grains['os_family'] == 'RedHat' %}
+    - name: openssh-server
+    {% elif grains['os_family'] == 'Arch' %}
     - name: ssh
     {% endif %}
+
+  service:
+    - running
+    - enable: True
+    {% if grains['os_family'] == 'Debian' %}
+    - name: ssh
+    {% elif grains['os_family'] == 'RedHat' %}
+    - name: sshd
+    {% elif grains['os_family'] == 'Arch' %}
+    - name: sshd
+    {% endif %}
     - require:
+      - pkg: sshd
       - file: sshd
+
   file.managed:
     - name: /etc/ssh/sshd_config
     - source: salt://ssh/server/sshd_config
@@ -17,13 +33,4 @@ sshd:
     - group: root
     - mode: 644
     - require:
-      {% if grains['os_family'] == 'Debian' %}
-      - pkg: openssh-server
-      {% else %}
-      - pkg: openssh
-      {% endif %}
-
-{% if grains['os_family'] == 'Debian' %}
-openssh-server:
-  pkg.installed
-{% endif %}
+      - pkg: sshd
