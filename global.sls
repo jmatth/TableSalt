@@ -1,7 +1,7 @@
 include:
+  - sudo
   - zsh
   - users
-  - sudo
   - ssh
   - vim
   - tmux
