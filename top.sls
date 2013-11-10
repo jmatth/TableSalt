@@ -1,6 +1,6 @@
 base:
-  '*':
-    - core
-  'archimedes':
-    - gui
+  'workstations':
+    - match: nodegroup
+    - users
     - devel
+    - gui
