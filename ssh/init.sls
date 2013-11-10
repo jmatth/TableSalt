@@ -1,0 +1,3 @@
+openssh:
+  pkg:
+    - installed
