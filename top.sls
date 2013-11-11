@@ -1,6 +1,8 @@
 base:
+  '*':
+    - global
+
   'workstations':
     - match: nodegroup
-    - users
     - devel
     - gui
