@@ -2,6 +2,10 @@ sudo:
   pkg:
     - installed
 
+wheel:
+  group.present:
+    - system: True
+
 /etc/sudoers:
   file:
     - managed
@@ -11,3 +15,4 @@ sudo:
     - mode: 400
     - require:
       - pkg: sudo
+      - group: wheel
