@@ -1,5 +1,6 @@
 base:
-  '*':
+  'kernel:Linux':
+    - match: grain
     - global
 
   'workstations':
