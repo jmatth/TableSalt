@@ -2,13 +2,12 @@ sudo:
   pkg:
     - installed
 
-wheel:
   group.present:
+    - name: wheel
     - system: True
 
-/etc/sudoers:
-  file:
-    - managed
+  file.managed:
+    - name: /etc/sudoers
     - source: salt://sudo/sudoers
     - user: root
     - group: root
