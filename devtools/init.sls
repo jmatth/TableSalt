@@ -1,10 +1,11 @@
 # Generate list of development tools to install from package groups
 {% if grains['os_family'] == 'Arch' %}
-{% for package in salt['cmd.run']('pacman -Sgq base-devel').split() %}
-devtools-{{ package }}:
+base-devel:
   pkg.installed:
-    - name: {{ package }}
-{% endfor %}
+    - pkgs:
+      {% for package in salt['cmd.run']('pacman -Sgq base-devel').split() %}
+      - {{ package }}
+      {% endfor %}
 {% elif grains['os_family'] == 'Debian' %}
 build-essential:
   pkg:
