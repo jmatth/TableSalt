@@ -25,3 +25,9 @@ ctags:
 
 git:
   pkg.installed
+
+clang:
+  pkg.installed
+
+the_silver_searcher:
+  pkg.installed
