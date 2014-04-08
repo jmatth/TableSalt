@@ -1,0 +1,3 @@
+roxterm:
+  pkg:
+    - installed

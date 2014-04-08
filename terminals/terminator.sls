@@ -1,0 +1,3 @@
+terminator:
+  pkg:
+    - installed

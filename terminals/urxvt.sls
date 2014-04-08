@@ -1,0 +1,3 @@
+rxvt-unicode:
+  pkg:
+    - installed
