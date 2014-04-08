@@ -1,9 +1,21 @@
 base:
   'kernel:Linux':
     - match: grain
-    - global
+    - sudo
+    - zsh
+    - users
+    - ssh
+    - vim
+    - tmux
+    - modprobe
+    - devtools
+    - magicsysrq
 
   'workstations':
     - match: nodegroup
-    - devel
-    - gui
+    - video
+    - gnome
+    - gdm
+    - browsers.firefox
+    - terminals.roxterm
+    - terminals.urxvt
