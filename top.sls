@@ -11,6 +11,10 @@ base:
     - devtools
     - magicsysrq
 
+  'virtual:VirtualBox':
+    - match: grain
+    - virtualbox.guest
+
   'workstations':
     - match: nodegroup
     - video
