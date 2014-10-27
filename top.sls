@@ -10,6 +10,7 @@ base:
     - modprobe
     - devtools
     - magicsysrq
+    - locale
 
   'virtual:VirtualBox':
     - match: grain
