@@ -6,7 +6,7 @@ virtualbox-guest-pkgs:
       - virtualbox-guest-utils
   {% endif %}
 
-{% for mod in ['vboxsf', 'vboxguest'] %}
+{% for mod in ['vboxsf', 'vboxguest', 'vboxvideo'] %}
 {{ mod }}:
   kmod.present:
     - persist: True
